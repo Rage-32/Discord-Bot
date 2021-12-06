@@ -1,30 +1,16 @@
 import discord
-from discord import message
 from discord.ext import commands
-from discord.ext.commands import has_permissions, CheckFailure
+from discord.ext.commands import has_permissions
 import time
-import platform
-from discord.ext import tasks
 import json,urllib.request
-import random
 import asyncio
 import datetime
-from itertools import cycle
-import os
 import datetime
 import json
-import itertools
-from typing import Union
-import traceback
-import sys
 from random import choice, randint
-from typing import Optional
 import a2s
 
 from aiohttp import request
-from discord import Member, Embed
-from discord.ext.commands import Cog, BucketType
-from discord.ext.commands import BadArgument
 from discord.ext.commands import command, cooldown
 
 
@@ -50,8 +36,6 @@ class FetchedUser(commands.Converter):
                                                         
 @client.event
 async def on_ready():
-        channel = client.get_channel(861159753145122816)
-        await channel.send('Bot is being started.')
         global startTime
         startTime = time.time()
         activity = discord.Game(name="")
@@ -63,7 +47,6 @@ async def on_ready():
         await asyncio.sleep(2)
         print(f"Main Cog has been loaded!")
         print("Fun Cog has been loaded!\n-----------")
-        await channel.send('Bot is fully loaded.')
 
 
 
@@ -131,9 +114,7 @@ async def giverole(ctx, user: discord.Member, role: discord.Role):
 async def shutdown(ctx):
         perms = ctx.author.permissions_in(ctx.channel)
         if perms.administrator:
-                channel = ctx.guild.get_channel(861159753145122816)
                 await ctx.message.delete()
-                await channel.send('Bot was forcibly shut down.')
                 await client.logout()
 
 @client.command()
@@ -181,7 +162,7 @@ async def status(ctx):
         embed.add_field(name="Status", value=f"{status}", inline=True)
         embed.add_field(name="Password", value=f"{password}", inline=True)
         embed.add_field(name="Map", value=output["data"]["attributes"]["details"]["map"], inline=True)
-        embed.add_field(name="Join", value="steam://connect/95.216.30.3:27414" ,inline=True)
+        embed.add_field(name="Join", value="steam://xxx" ,inline=True)
         embed.set_footer(text="This information refreshes every 30 minutes")
         await channel.send(embed=embed)
 
@@ -214,7 +195,7 @@ async def stats(ctx):
         memberCount = sum([i.member_count for i in client.guilds])
         dpyVersion = discord.__version__
 
-        embed = discord.Embed(title="Kai.PR".format(client.user), description='', color=ctx.author.color)
+        embed = discord.Embed(title="Kai Bot".format(client.user), description='', color=ctx.author.color)
         uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
 
         embed.add_field(name='Bot Version', value=chromeversion)
