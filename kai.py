@@ -54,7 +54,7 @@ async def on_ready():
         await channel.send('Bot is being started.')
         global startTime
         startTime = time.time()
-        activity = discord.Game(name="playazclub.xyz | -help")
+        activity = discord.Game(name="")
         await client.change_presence(status=discord.Status.dnd, activity=activity)
         print("Commands Loading...")
         await asyncio.sleep(2)
@@ -78,13 +78,13 @@ async def on_ready():
 #######################               
                    
 # Version of the Bot
-chromeversion = 'Alpha'
+chromeversion = ''
 
 # Bot Token
-TOKEN = 'ODYxMTE4NTQ0MjgwMjg5Mjgw.YOFJIw.qEMLN64-HFGncDBVwZa898z_fFc'
+TOKEN = ''
 
 # Autorole Config
-autorole = 'Users'
+autorole = ''
 
 #######################################
 #|  ___| | | |  ___| \ | |_   _/  ___|#
@@ -140,7 +140,7 @@ async def shutdown(ctx):
 async def players(ctx):
         try:
                 output = []
-                address = ("95.216.30.3", 27414)
+                address = ("", 12345)
                 players = a2s.players(address)
 
                 for player in players:
@@ -168,7 +168,7 @@ async def ping(ctx):
 @client.command()
 async def status(ctx):
         channel = ctx.channel
-        data = urllib.request.urlopen("https://api.battlemetrics.com/servers/10662906").read()
+        data = urllib.request.urlopen("").read()
         output = json.loads(data)
         embed = discord.Embed(title=output["data"]["attributes"]["name"], color=ctx.author.color)
         maxPlayers = output["data"]["attributes"]["maxPlayers"]
