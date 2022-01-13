@@ -105,11 +105,6 @@ async def on_member_join(member):
 # \____/\___/\_|  |_/\_|  |_/\_| |_/\_| \_/___/  \____/ #
 #########################################################
 
-
-@client.command(pass_context=True)
-async def giverole(ctx, user: discord.Member, role: discord.Role):
-    await user.add_roles(role)
-
 @client.command()
 async def shutdown(ctx):
         perms = ctx.author.permissions_in(ctx.channel)
